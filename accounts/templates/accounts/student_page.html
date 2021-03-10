@@ -1,0 +1,84 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+
+{% include 'accounts/status.html' %}
+
+<style>
+  .profile-pic{
+		max-width: 200px;
+		max-height:200px;
+		margin: 0 auto;
+		border-radius: 50%;
+	}
+</style>
+
+<br>
+
+<div class="row">
+<div class="col-md">
+  <div class="card card-body">
+    <h5>Profile</h5>
+    <a class="btn btn-primary  btn-sm btn-block float-right" href="{% url 'account' %}">Update Profile</a>
+    <hr>
+    <img src="{{ request.user.student.profile_pic.url }}" alt="" class="profile-pic">
+    <p>Name: {{request.user.student.name}}</p>
+    <p>ID: {{request.user.student.student_id}}</p>
+    <p>Dorm: {{request.user.student.dorm}}</p>
+    <p>Room: {{request.user.student.room}}</p>
+  </div>
+</div>
+
+<div class="col-md">
+  <div class="card card-body">
+    <h5>Contact Information</h5>
+    <hr>
+    <p>Email: {{request.user.student.email}}</p>
+    <p>Phone: {{request.user.student.phone}}</p>
+  </div>
+</div>
+
+  <div class="col-md">
+    <div class="card text-center text-white" id="total-orders">
+      <div class="card-header">
+        <h5 class="card-title">Total Orders</h5>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">{{order_count}}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+      <a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_order' %}">Create Order</a>
+      <br>
+			<table class="table table-sm">
+				<tr>
+					<th>Order</th>
+					<th>Note</th>
+					<th>Date Orderd</th>
+					<th>Repair Date</th>
+					<th>Status</th>
+				</tr>
+
+        {% for order in orders %}
+        <tr>
+          <td>{{ order.work_order }}</td>
+          <td>{{ order.note }}</td>
+          <td>{{ order.date_created }}</td>
+          <td>{{ order.repair_date }}</td>
+          <td>{{ order.status }}</td>
+        </tr>
+        {% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

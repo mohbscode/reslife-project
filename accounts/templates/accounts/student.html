@@ -1,0 +1,87 @@
+{%  extends 'accounts/base.html' %}
+
+{% block content %}
+
+	<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Student:</h5>
+			<hr>
+      <p>Name: {{student.name}}</p>
+			<p>ID: {{student.student_id}}</p>
+			<p>Dorm: {{student.dorm}}</p>
+			<p>Room: {{student.room}}</p>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Email: {{student.email}}</p>
+			<p>Phone: {{student.phone}}</p>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Total Orders</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{order_count}}</h1>
+		</div>
+	</div>
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<button class="btn btn-info  btn-sm btn-block" id="appear" type="button" name="button">Search</button>
+		<div class="card card-body" id="dissapear">
+			<form method="get">
+
+        {{myFilter.form}}
+
+		    <button class="btn btn-primary" id="toggle" type="submit">Search</button>
+		  </form>
+		</div>
+	</div>
+
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Order</th>
+					<th>Note</th>
+					<th>Date Orderd</th>
+					<th>Repair Date</th>
+					<th>Status</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+
+        {% for order in orders %}
+        <tr>
+          <td>{{ order.work_order }}</td>
+          <td>{{ order.note }}</td>
+          <td>{{ order.date_created }}</td>
+          <td>{{ order.repair_date }}</td>
+          <td>{{ order.status }}</td>
+          <td><a class="btn btn-sm btn-warning" href="{% url 'update_order' order.id %}">Update</a></td>
+          <td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

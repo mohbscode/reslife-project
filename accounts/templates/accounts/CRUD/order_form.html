@@ -1,0 +1,155 @@
+{% extends 'accounts/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+  .hide{
+		display: none;
+	}
+</style>
+
+<br>
+
+  <div class="">
+
+  </div>
+
+  <div class="row justify-content-center m-5">
+    <div class="col-md-6">
+      <div class="card card-body">
+
+        <h1>Add Order</h1>
+
+        <br>
+
+   <!-- <form class="form-inline justify-content-center" action="" method="post">
+    {% csrf_token %}
+    {% if request.user.student %}
+    <div class="form-group">
+        {{form.student.label}}
+        {{form.student}}
+    </div>
+    <div class="form-group">
+        {{form.work_order.label}}
+        {{form.work_order}}
+    </div>
+    <div class="form-group">
+        {{form.dorm.label}}
+        {{form.dorm}}
+    </div>
+    <div class="form-group">
+        {{form.room.label}}
+        {{form.room}}
+    </div> -->
+    <!-- <div class="form-group">
+        {{form.status.label}}
+        {{form.status}}
+    </div> -->
+    <!-- <div class="form-group">
+        {{form.note.label}}
+        {{form.note}}
+    </div>
+     {% elif request.user.is_staff %}
+     <div class="form-group">
+         {{form.student.label}}
+         {{form.student}}
+     </div>
+     <div class="form-group">
+         {{form.work_order.label}}
+         {{form.work_order}}
+     </div>
+     <div class="form-group">
+         {{form.status.label}}
+         {{form.status}}
+     </div>
+     <div class="form-group">
+         {{form.dorm.label}}
+         {{form.dorm}}
+     </div>
+     <div class="form-group">
+         {{form.room.label}}
+         {{form.room}}
+     </div>
+     <div class="form-group hide">
+         {{form.note.label}}
+         {{form.note}}
+     </div>
+     {% else %}
+     <div class="form-group">
+         {{form.student.label}}
+         {{form.student}}
+     </div>
+     <div class="form-group">
+         {{form.work_order.label}}
+         {{form.work_order}}
+     </div>
+     <div class="form-group">
+         {{form.status.label}}
+         {{form.status}}
+     </div>
+     <div class="form-group">
+         {{form.dorm.label}}
+         {{form.dorm}}
+     </div>
+     <div class="form-group">
+         {{form.room.label}}
+         {{form.room}}
+     </div>
+     <div class="form-group hide">
+         {{form.note.label}}
+         {{form.note}}
+     </div>
+     <div class="form-group">
+         {{form.repair_date.label}}
+         {{form.repair_date}}
+     </div>
+     {% endif %}
+
+     <input class="btn btn-sm btn-success" type="submit" name="Submit">
+   </form> -->
+
+<div class="form-group">
+  <form class=""  method="post">
+   {% csrf_token %}
+
+  {% if request.user.student %}
+  <label for="student">Student:</label>
+  {{form.student}}
+  <br>
+  <label for="work_order">Work Order:</label>
+  {{form.work_order}}
+  <br>
+  <label for="dorm">Dorm:</label>
+  {{form.dorm}}
+  <br>
+  <label for="room">Room:</label>
+  {{form.room}}
+  <br>
+  <!-- <label for="status">Status:</label>
+  {{form.status}}
+  <br> -->
+  <label for="note">Note:</label>
+  {{form.note}}
+  <br>
+  <!-- <label for="repair_date">Repair Date:</label>
+  {{form.repair_date}}
+  <br> -->
+  {% else %}
+
+  {{ form.as_p }}
+
+  {% endif %}
+
+  <input class="btn btn-sm btn-success" type="submit" name="Submit">
+
+  </form>
+</div>
+
+
+     </div>
+    </div>
+  </div>
+
+{% endblock %}
